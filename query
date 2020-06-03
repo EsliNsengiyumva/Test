@@ -1,0 +1,13 @@
+ select ss.seasonid,seasonname,sc.DistrictID ,si.sectorid,si.siteid,gr.groupid,count(clientid) as Clients,landverified from seasons se
+     left join seasonclients ss
+     on se.seasonid=ss.seasonid
+     left join groups gr
+     on ss.groupid=gr.groupid
+     left join sites si
+     on si.SiteID=gr.SiteID
+     left join sectors sc
+     on si.SectorID=sc.SectorID
+     where ss.dropped='0'
+     and seasonname='Mar. 2010, Long Rain'
+     and gr.groupid='700'
+     and se.Active='0'
